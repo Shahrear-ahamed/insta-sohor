@@ -27,7 +27,6 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
-  console.log(text.length);
     return text.length < 30 ? text: text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
@@ -55,6 +54,9 @@ const createPost = (post) => {
   console.log(post);
     const image = post.image;
     const avater = post.userImage;
+    const commentUser = post.comments[0]?.user;
+    const commentText = post.comments[0]?.text;
+    console.log(commentUser);
     const div = document.createElement( "article" );
     div.classList.add( "post" );
     div.innerHTML = `
@@ -127,9 +129,9 @@ const createPost = (post) => {
                   <div class="post__description">
                     <small>
                       <a class="post__name--underline" href="#">
-                          ${post.comments?.user}
+                          ${commentUser}
                       </a>
-                      ${post.comments?.text}
+                      ${commentText}
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
